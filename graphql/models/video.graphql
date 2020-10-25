@@ -1,0 +1,52 @@
+extend type Query {
+
+    video(id: String @eq): Video @find
+}
+
+extend type Mutation {
+    createVideo(input: VideoInput @spread): Video @create
+}
+
+input VideoInput {
+    id: String!
+    music: MusicInputBelongsTo
+    release_date: Date
+    is_mv: Boolean
+    original_video_id: String
+    custom_music_name: String
+    singers: ArtistInputBelongsToMany
+    mixers: ArtistInputBelongsToMany
+    off_vocals: ArtistInputBelongsToMany
+    arrangers: ArtistInputBelongsToMany
+    recommends: VideoInputBelongsToMany
+}
+
+input VideoInputHasMany {
+    create: [VideoInput]
+    upsert: [VideoInput]
+    connect: [String]
+    sync: [String]
+}
+
+input VideoInputBelongsToMany {
+    create: [VideoInput]
+    upsert: [VideoInput]
+    connect: [String]
+    sync: [String]
+}
+
+type Video {
+    id: String!
+    music: Music @belongsTo
+    release_date: Date
+    is_mv: Boolean!
+    original_video_id: String
+    custom_music_name: String
+    singers: [Artist] @belongsToMany
+    mixers: [Artist] @belongsToMany
+    off_vocals: [Artist] @belongsToMany
+    arrangers: [Artist] @belongsToMany
+    recommends: [Video] @belongsToMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}

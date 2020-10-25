@@ -1,0 +1,86 @@
+extend type Query {
+    searchArtistByID(id: String! @eq): Artist @find
+    getAllArtist(orderBy: _ @orderBy(columns: ["created_at"])): [Artist!]! @all
+    artists: [Artist!]! @paginate(defaultCount: 10)
+}
+
+extend type Mutation {
+    createArtist(input: ArtistInput @spread): Artist! @create
+}
+
+input ArtistInput {
+    id: String!
+    name: String!
+    name_ruby: String
+    profile: String
+    sex: String
+    birthday: Date
+    id_youtube: String
+    youtube_registration_date: Date
+    id_twitter: String
+    id_instagram: String
+    url_niconico: String
+    url_homepage: String
+    id_spotify: String
+    id_apple_music: String
+    id_showroom: Int
+    id_openrec: String
+    id_bilibili: Int
+    id_tiktok: String
+    id_twitcasting: String
+    id_facebook: String
+    id_pixiv: Int
+    youtube_channel_is_user: Boolean
+    recommends: ArtistInputBelongsToMany
+    children: ArtistInputBelongsToMany
+    composer_music: MusicInputBelongsToMany
+    lyricist_music: MusicInputBelongsToMany
+    arranger_music: MusicInputBelongsToMany
+    mixer_videos: MusicInputBelongsToMany
+    off_vocal_videos: MusicInputBelongsToMany
+    arranger_videos: MusicInputBelongsToMany
+    singer_videos: VideoInputBelongsToMany
+}
+
+input ArtistInputBelongsToMany {
+    create: [ArtistInput!]
+    upsert: [ArtistInput!]
+    connect: [String!]
+    sync: [String!]
+}
+
+type Artist {
+    id: String!
+    name: String!
+    name_ruby: String
+    profile: String
+    sex: String
+    birthday: Date
+    id_youtube: String
+    youtube_registration_date: Date
+    id_twitter: String
+    id_instagram: String
+    url_niconico: String
+    url_homepage: String
+    id_spotify: String
+    id_apple_music: String
+    id_showroom: Int
+    id_openrec: String
+    id_bilibili: Int
+    id_tiktok: String
+    id_twitcasting: String
+    id_facebook: String
+    id_pixiv: Int
+    youtube_channel_is_user: Boolean!
+    recommends: [Artist] @belongsToMany
+    children: [Artist] @belongsToMany
+    composer_music: [Music] @belongsToMany
+    lyricist_music: [Music] @belongsToMany
+    arranger_music: [Music] @belongsToMany
+    mixer_videos: [Music] @belongsToMany
+    off_vocal_videos: [Music] @belongsToMany
+    arranger_videos: [Music] @belongsToMany
+    singer_videos: [Video] @belongsToMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}

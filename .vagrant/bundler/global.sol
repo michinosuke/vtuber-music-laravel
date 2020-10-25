@@ -1,0 +1,1 @@
+{"dependencies":[["mini_portile2",["~> 2.4.0"]],["nokogiri",[">= 0"]],["vagrant-parallels",["= 2.0.1"]]],"checksum":"e78b6500857bca76dbc198382419df8f85899ec4dbbffd31202cc576d241108c","vagrant_version":"2.2.10"}

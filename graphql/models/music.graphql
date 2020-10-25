@@ -1,0 +1,52 @@
+extend type Query {
+    searchMusicByID(id: String! @eq): Music @find
+    getAllMusic(orderBy: _ @orderBy(columns: ["created_at"])): [Music!]! @all
+}
+
+extend type Mutation {
+    createMusic(input: MusicInput @spread): Music @create
+}
+
+input MusicInput {
+    id: String!
+    title: String!
+    title_ruby: String
+    lyrics: String
+    lyrics_url: String
+    genre: String
+    original_video_youtube_id: String
+    videos: VideoInputHasMany
+    composers: ArtistInputBelongsToMany
+    lyricists: ArtistInputBelongsToMany
+    arrangers: ArtistInputBelongsToMany
+}
+
+input MusicInputBelongsTo {
+    create: MusicInput
+    upsert: MusicInput
+    connect: String
+    sync: String
+}
+
+input MusicInputBelongsToMany {
+    create: [MusicInput!]
+    upsert: [MusicInput!]
+    connect: [String]
+    sync: [String]
+}
+
+type Music {
+    id: String!
+    title: String!
+    title_ruby: String
+    lyrics: String
+    lyrics_url: String
+    genre: String
+    original_video_youtube_id: String
+    videos: [Video] @hasMany
+    composers: [Artist] @belongsToMany
+    lyricists: [Artist] @belongsToMany
+    arrangers: [Artist] @belongsToMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}
