@@ -19,8 +19,10 @@ class CreateVideoRecommendsTable extends Migration
             $table->timestamps();
 
             $table->primary(['video_id', 'recommended_video_id']);
-            $table->foreign('video_id')->references('id')->on('videos');
-            $table->foreign('recommended_video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('recommended_video_id')->references('id')->on('videos')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

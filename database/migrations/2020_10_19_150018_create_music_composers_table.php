@@ -19,8 +19,10 @@ class CreateMusicComposersTable extends Migration
             $table->timestamps();
 
             $table->primary(['music_id', 'artist_id']);
-            $table->foreign('music_id')->references('id')->on('music');
-            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreign('music_id')->references('id')->on('music')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('artist_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

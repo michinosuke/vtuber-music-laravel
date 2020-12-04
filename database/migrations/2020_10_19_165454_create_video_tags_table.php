@@ -18,7 +18,8 @@ class CreateVideoTagsTable extends Migration
             $table->string('tag', 31);
             $table->timestamps();
 
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

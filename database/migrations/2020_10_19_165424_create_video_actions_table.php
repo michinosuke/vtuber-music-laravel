@@ -20,7 +20,8 @@ class CreateVideoActionsTable extends Migration
             $table->timestamps();
 
             $table->primary(['video_id', 'since']);
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

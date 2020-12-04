@@ -19,8 +19,10 @@ class CreateArtistChildrenTable extends Migration
             $table->timestamps();
 
             $table->primary(['parent_id', 'child_id']);
-            $table->foreign('parent_id')->references('id')->on('artists');
-            $table->foreign('child_id')->references('id')->on('artists');
+            $table->foreign('parent_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('child_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

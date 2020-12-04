@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         \Nuwave\Lighthouse\Tracing\TracingServiceProvider::class,
+        \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
 
         /*
          * Application Service Providers...

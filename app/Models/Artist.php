@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Artist extends Model
@@ -61,12 +61,22 @@ class Artist extends Model
 
     public function recommends(): BelongsToMany
     {
-        return $this->belongsToMany('\App\Models\ArtistRecommend', 'artist_recommends', 'artist_id', 'recommended_artist_id');
+        return $this->belongsToMany('\App\Models\Artist', 'artist_recommends', 'artist_id', 'recommended_artist_id');
     }
 
     public function children(): BelongsToMany
     {
         return $this->belongsToMany('\App\Models\Artist', 'artist_children', 'parent_id', 'child_id');
+    }
+
+    // public function parent(): HasOneThrough
+    // {
+    //     return $this->hasOneThrough('\App\Models\Artist', '\App\Models\ArtistChild', 'child_id', 'id', 'id', 'parent_id');
+    // }
+
+    public function parents(): BelongsToMany
+    {
+        return $this->belongsToMany('\App\Models\Artist', 'artist_children', 'child_id', 'parent_id');
     }
 
     // 編曲した曲

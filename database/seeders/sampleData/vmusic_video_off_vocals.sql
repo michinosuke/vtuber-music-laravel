@@ -1,1 +1,1 @@
-INSERT INTO `video_off_vocals` VALUES ('E4kRDlsMLNM','ism','2020-02-27 14:05:09',NULL),('O8v5S1nhKzo','haikara_sound','2020-03-02 12:28:51',NULL),('wte8h4_MlZo','perutan','2020-03-03 12:29:29',NULL);
+INSERT INTO `video_off_vocals` VALUES ('E4kRDlsMLNM','ism','2020-02-27 14:05:09','2020-01-01 00:00:00'),('O8v5S1nhKzo','haikara_sound','2020-03-02 12:28:51','2020-01-01 00:00:00'),('wte8h4_MlZo','perutan','2020-03-03 12:29:29','2020-01-01 00:00:00');

@@ -19,8 +19,10 @@ class CreateArtistRecommendsTable extends Migration
             $table->timestamps();
 
             $table->primary(['artist_id', 'recommended_artist_id']);
-            $table->foreign('artist_id')->references('id')->on('artists');
-            $table->foreign('recommended_artist_id')->references('id')->on('artists');
+            $table->foreign('artist_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('recommended_artist_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -15,7 +15,8 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "mll-lab/laravel-graphql-playground": "^2.4",
-        "nuwave/lighthouse": "^4.17"
+        "nuwave/lighthouse": "^4.17",
+        "pusher/pusher-php-server": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

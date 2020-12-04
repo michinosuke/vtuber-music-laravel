@@ -1,7 +1,8 @@
 extend type Query {
-    searchArtistByID(id: String! @eq): Artist @find
-    getAllArtist(orderBy: _ @orderBy(columns: ["created_at"])): [Artist!]! @all
-    artists: [Artist!]! @paginate(defaultCount: 10)
+    artist(id: String! @eq): Artist @find
+    # getAllArtist(orderBy: _ @orderBy(columns: ["created_at"])): [Artist!]! @all
+    # artists: [Artist!]! @paginate(defaultCount: 10)
+    allArtist: [Artist!]! @all
 }
 
 extend type Mutation {
@@ -33,6 +34,7 @@ input ArtistInput {
     youtube_channel_is_user: Boolean
     recommends: ArtistInputBelongsToMany
     children: ArtistInputBelongsToMany
+    parent: ArtistInput
     composer_music: MusicInputBelongsToMany
     lyricist_music: MusicInputBelongsToMany
     arranger_music: MusicInputBelongsToMany
@@ -74,6 +76,7 @@ type Artist {
     youtube_channel_is_user: Boolean!
     recommends: [Artist] @belongsToMany
     children: [Artist] @belongsToMany
+    parents: [Artist] @belongsToMany
     composer_music: [Music] @belongsToMany
     lyricist_music: [Music] @belongsToMany
     arranger_music: [Music] @belongsToMany

@@ -19,8 +19,10 @@ class CreateVideoOffVocalsTable extends Migration
             $table->timestamps();
 
             $table->primary(['video_id', 'artist_id']);
-            $table->foreign('video_id')->references('id')->on('videos');
-            $table->foreign('artist_id')->references('id')->on('artists');
+            $table->foreign('video_id')->references('id')->on('videos')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('artist_id')->references('id')->on('artists')
+                    ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

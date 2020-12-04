@@ -1,6 +1,7 @@
 extend type Query {
-    searchMusicByID(id: String! @eq): Music @find
-    getAllMusic(orderBy: _ @orderBy(columns: ["created_at"])): [Music!]! @all
+    music(id: String! @eq): Music @find
+    # getAllMusic(orderBy: _ @orderBy(columns: ["created_at"])): [Music!]! @all
+    allMusic: [Music!]! @all
 }
 
 extend type Mutation {

@@ -1,6 +1,6 @@
 extend type Query {
-
-    video(id: String @eq): Video @find
+    video(id: String! @eq): Video @find
+    allVideo: [Video!]! @all
 }
 
 extend type Mutation {

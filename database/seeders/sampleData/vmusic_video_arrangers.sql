@@ -1,1 +1,1 @@
-INSERT INTO `video_arrangers` VALUES ('7cbzUExj_pQ','suo_patra',NULL,'2020-03-02 11:46:23'),('jgAgvRPfgWY','kasokaso',NULL,'2020-03-01 08:54:27'),('zaunz6KC9pY','ankoromochi',NULL,'2020-03-01 09:00:30');
+INSERT INTO `video_arrangers` VALUES ('7cbzUExj_pQ','suo_patra','2020-01-01 00:00:00','2020-03-02 11:46:23'),('jgAgvRPfgWY','kasokaso','2020-01-01 00:00:00','2020-03-01 08:54:27'),('zaunz6KC9pY','ankoromochi','2020-01-01 00:00:00','2020-03-01 09:00:30');
