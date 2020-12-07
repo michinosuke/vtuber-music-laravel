@@ -1,6 +1,9 @@
 extend type Query {
     music(id: String! @eq): Music @find
-    # getAllMusic(orderBy: _ @orderBy(columns: ["created_at"])): [Music!]! @all
+    findMusic(
+        id: String @where(operator: "like", key: "id"),
+        title: String @where(operator: "like", key: "title")
+    ): [Music]! @all
     allMusic: [Music!]! @all
 }
 

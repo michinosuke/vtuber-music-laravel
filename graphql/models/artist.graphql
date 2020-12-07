@@ -1,12 +1,19 @@
 extend type Query {
     artist(id: String! @eq): Artist @find
-    # getAllArtist(orderBy: _ @orderBy(columns: ["created_at"])): [Artist!]! @all
-    # artists: [Artist!]! @paginate(defaultCount: 10)
+    findArtist(
+        id: String @where(operator: "like", key: "id"),
+        name: String @where(operator: "like", key: "name")
+    ): [Artist]! @all
     allArtist: [Artist!]! @all
 }
 
 extend type Mutation {
     createArtist(input: ArtistInput @spread): Artist! @create
+}
+
+input FindArtistInput {
+    id: String @in (key: "id")
+    name: String @in (key: "name")
 }
 
 input ArtistInput {
