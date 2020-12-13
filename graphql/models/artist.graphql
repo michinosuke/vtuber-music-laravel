@@ -5,6 +5,7 @@ extend type Query {
         name: String @where(operator: "like", key: "name")
     ): [Artist]! @all
     allArtist: [Artist!]! @all
+    countArtist: Int! @count(model: "Artist")
 }
 
 extend type Mutation {
