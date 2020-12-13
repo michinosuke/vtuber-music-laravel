@@ -22,7 +22,8 @@ class CreateVideosTable extends Migration
             $table->string('custom_music_name', 255)->nullable();
             $table->timestamps();
 
-            $table->foreign('music_id')->references('id')->on('music');
+            $table->foreign('music_id')->references('id')->on('music')
+                    ->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
