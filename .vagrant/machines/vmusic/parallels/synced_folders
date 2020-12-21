@@ -1,1 +1,0 @@
-{"parallels":{"/home/vagrant/code":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/code","hostpath":"/Users/michinosuke/laravel_app/vmusic","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/michinosuke/laravel_app/vmusic","disabled":false,"__vagrantfile":true}}}
