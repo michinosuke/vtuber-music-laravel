@@ -21,6 +21,7 @@ input ArtistInput {
     id: String!
     name: String!
     name_ruby: String
+    name_original: String
     profile: String
     sex: String
     birthday: Date
@@ -39,6 +40,8 @@ input ArtistInput {
     id_twitcasting: String
     id_facebook: String
     id_pixiv: Int
+    image_url_profile_icon_source_url: String
+    image_url_profile_header_source_url: String
     youtube_channel_is_user: Boolean
     recommends: ArtistInputBelongsToMany
     children: ArtistInputBelongsToMany
@@ -63,6 +66,7 @@ type Artist {
     id: String!
     name: String!
     name_ruby: String
+    name_original: String
     profile: String
     sex: String
     birthday: Date
@@ -81,6 +85,8 @@ type Artist {
     id_twitcasting: String
     id_facebook: String
     id_pixiv: Int
+    image_url_profile_icon_source_url: String
+    image_url_profile_header_source_url: String
     youtube_channel_is_user: Boolean!
     recommends: [Artist] @belongsToMany
     children: [Artist] @belongsToMany
