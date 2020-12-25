@@ -20,7 +20,8 @@ class CreateVideosTable extends Migration
             $table->boolean('is_mv')->default(TRUE);
             $table->string('original_video_id', 31)->nullable();
             $table->string('custom_music_name', 255)->nullable();
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->foreign('music_id')->references('id')->on('music')
                     ->onDelete('cascade')->onUpdate('cascade');;

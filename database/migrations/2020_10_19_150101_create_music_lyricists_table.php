@@ -16,7 +16,8 @@ class CreateMusicLyricistsTable extends Migration
         Schema::create('music_lyricists', function (Blueprint $table) {
             $table->string('music_id', 31);
             $table->string('artist_id', 31);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['music_id', 'artist_id']);
             $table->foreign('music_id')->references('id')->on('music')

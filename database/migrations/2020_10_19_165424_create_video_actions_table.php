@@ -17,7 +17,8 @@ class CreateVideoActionsTable extends Migration
             $table->string('video_id', 31);
             $table->date('since');
             $table->integer('love')->unsigned();
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['video_id', 'since']);
             $table->foreign('video_id')->references('id')->on('videos')

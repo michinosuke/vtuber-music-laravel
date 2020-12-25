@@ -41,7 +41,8 @@ class CreateArtistsTable extends Migration
             $table->string('image_url_profile_header_youtube')->nullable();
             $table->string('image_url_profile_header_twitter')->nullable();
             $table->boolean('youtube_channel_is_user')->default(FALSE);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

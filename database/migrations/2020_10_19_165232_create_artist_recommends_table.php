@@ -16,7 +16,8 @@ class CreateArtistRecommendsTable extends Migration
         Schema::create('artist_recommends', function (Blueprint $table) {
             $table->string('artist_id', 31);
             $table->string('recommended_artist_id', 31);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['artist_id', 'recommended_artist_id']);
             $table->foreign('artist_id')->references('id')->on('artists')

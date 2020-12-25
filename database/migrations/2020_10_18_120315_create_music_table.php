@@ -21,7 +21,8 @@ class CreateMusicTable extends Migration
             $table->string('lyrics_url', 2047)->nullable();
             $table->string('genre', 127)->nullable();
             $table->string('original_video_youtube_id', 31)->nullable();
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

@@ -16,7 +16,8 @@ class CreateArtistChildrenTable extends Migration
         Schema::create('artist_children', function (Blueprint $table) {
             $table->string('parent_id', 31);
             $table->string('child_id', 31);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['parent_id', 'child_id']);
             $table->foreign('parent_id')->references('id')->on('artists')

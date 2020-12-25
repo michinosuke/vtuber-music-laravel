@@ -16,7 +16,8 @@ class CreateVideoSingersTable extends Migration
         Schema::create('video_singers', function (Blueprint $table) {
             $table->string('video_id', 31);
             $table->string('artist_id', 31);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['video_id', 'artist_id']);
             $table->foreign('video_id')->references('id')->on('videos')

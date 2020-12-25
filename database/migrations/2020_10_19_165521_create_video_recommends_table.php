@@ -16,7 +16,8 @@ class CreateVideoRecommendsTable extends Migration
         Schema::create('video_recommends', function (Blueprint $table) {
             $table->string('video_id', 31);
             $table->string('recommended_video_id', 31);
-            $table->timestamps();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->primary(['video_id', 'recommended_video_id']);
             $table->foreign('video_id')->references('id')->on('videos')
