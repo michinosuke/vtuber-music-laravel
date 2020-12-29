@@ -42,6 +42,8 @@ input ArtistInput {
     id_pixiv: Int
     image_url_profile_icon_source_url: String
     image_url_profile_header_source_url: String
+    image_front_type_icon: String
+    image_front_type_header: String
     youtube_channel_is_user: Boolean
     recommends: ArtistInputBelongsToMany
     children: ArtistInputBelongsToMany
