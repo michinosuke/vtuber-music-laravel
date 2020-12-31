@@ -13,6 +13,7 @@ input VideoInput {
     music: MusicInputBelongsTo
     release_date: Date
     is_mv: Boolean
+    is_original_music: Boolean
     original_video_id: String
     custom_music_name: String
     image_url_thumbnail: String
@@ -42,6 +43,7 @@ type Video {
     music: Music @belongsTo
     release_date: Date
     is_mv: Boolean!
+    is_original_music: Boolean!
     original_video_id: String
     custom_music_name: String
     singers: [Artist] @belongsToMany
