@@ -1,0 +1,23 @@
+extend type Query {
+    requestVideos: [RequestVideo]! @all
+}
+
+extend type Mutation {
+    createRequestVideo(input: RequestVideoInput @spread): RequestVideo! @create
+}
+
+input RequestVideoInput {
+    id: String!
+    stage: Int!
+    content: String!
+    contributor_twitter_id: String
+}
+
+type RequestVideo {
+    id: String!
+    stage: Int!
+    content: String!
+    contributor_twitter_id: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
