@@ -9,12 +9,27 @@ extend type Query {
 }
 
 extend type Mutation {
-    createMusic(input: MusicInput @spread): Music @create
+    createMusic(input: MusicInput! @spread): Music! @create
+    updateMusic(id: String!, content: MusicInputUpdate! @spread): Music! @update
+    upsertMusic(id: String!, content: MusicInputUpdate! @spread): Music! @upsert
 }
 
 input MusicInput {
     id: String!
     title: String!
+    title_ruby: String
+    lyrics: String
+    lyrics_url: String
+    genre: String
+    original_video_youtube_id: String
+    videos: VideoInputHasMany
+    composers: ArtistInputBelongsToMany
+    lyricists: ArtistInputBelongsToMany
+    arrangers: ArtistInputBelongsToMany
+}
+
+input MusicInputUpdate {
+    title: String
     title_ruby: String
     lyrics: String
     lyrics_url: String

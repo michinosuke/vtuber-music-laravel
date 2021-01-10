@@ -1,9 +1,10 @@
 extend type Query {
-    requestVideos: [RequestVideo]! @all
+    requestVideos(orderBy: _ @orderBy(columns: ["stage", "posted_at", "title"])): [RequestVideo]! @all
 }
 
 extend type Mutation {
     createRequestVideo(input: RequestVideoInput @spread): RequestVideo! @create
+    upsertRequestVideo(id: String!, content: RequestVideoInputUpdate! @spread): RequestVideo! @upsert
 }
 
 input RequestVideoInput {
@@ -11,6 +12,14 @@ input RequestVideoInput {
     stage: Int!
     content: String!
     contributor_twitter_id: String
+    is_done: Boolean
+}
+
+input RequestVideoInputUpdate {
+    stage: Int!
+    content: String!
+    contributor_twitter_id: String
+    is_done: Boolean
 }
 
 type RequestVideo {
@@ -18,6 +27,7 @@ type RequestVideo {
     stage: Int!
     content: String!
     contributor_twitter_id: String
+    is_done: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
 }

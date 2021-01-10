@@ -18,11 +18,12 @@ class CreateRequestVideosTable extends Migration
             $table->integer('stage')->unsigned();
             $table->string('content', 2047);
             $table->string('contributor_twitter_id', 16)->nullable();
+            $table->boolean('is_done')->default(FALSE);
 
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->primary(['id', 'stage']);
+            $table->primary('id');
         });
     }
 

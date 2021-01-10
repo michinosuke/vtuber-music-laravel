@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class RequestVideo extends Model
 {
@@ -38,4 +39,9 @@ class RequestVideo extends Model
      * @var string
      */
     protected $keyType = 'string';
+
+    // public function scopeNotFinished(Builder $query): Builder
+    // {
+    //     return $query->whereNotNull('email_verified_at');
+    // }
 }

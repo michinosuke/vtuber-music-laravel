@@ -9,7 +9,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    createArtist(input: ArtistInput @spread): Artist! @create
+    createArtist(input: ArtistInput! @spread): Artist! @create
+    updateArtist(id: String!, content: ArtistInputUpdate! @spread): Artist! @update
+    upsertArtist(id: String!, content: ArtistInputUpdate! @spread): Artist! @upsert
 }
 
 input FindArtistInput {
@@ -20,6 +22,45 @@ input FindArtistInput {
 input ArtistInput {
     id: String!
     name: String!
+    name_ruby: String
+    name_original: String
+    profile: String
+    sex: String
+    birthday: Date
+    id_youtube: String
+    youtube_registration_date: Date
+    id_twitter: String
+    id_instagram: String
+    url_niconico: String
+    url_homepage: String
+    id_spotify: String
+    id_apple_music: String
+    id_showroom: Int
+    id_openrec: String
+    id_bilibili: Int
+    id_tiktok: String
+    id_twitcasting: String
+    id_facebook: String
+    id_pixiv: Int
+    image_url_profile_icon_source_url: String
+    image_url_profile_header_source_url: String
+    image_front_type_icon: String
+    image_front_type_header: String
+    youtube_channel_is_user: Boolean
+    recommends: ArtistInputBelongsToMany
+    children: ArtistInputBelongsToMany
+    parent: ArtistInput
+    composer_music: MusicInputBelongsToMany
+    lyricist_music: MusicInputBelongsToMany
+    arranger_music: MusicInputBelongsToMany
+    mixer_videos: MusicInputBelongsToMany
+    off_vocal_videos: MusicInputBelongsToMany
+    arranger_videos: MusicInputBelongsToMany
+    singer_videos: VideoInputBelongsToMany
+}
+
+input ArtistInputUpdate {
+    name: String
     name_ruby: String
     name_original: String
     profile: String

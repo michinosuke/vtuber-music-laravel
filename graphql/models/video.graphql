@@ -5,11 +5,28 @@ extend type Query {
 }
 
 extend type Mutation {
-    createVideo(input: VideoInput @spread): Video @create
+    createVideo(input: VideoInput! @spread): Video! @create
+    updateVideo(id: String!, content: VideoInputUpdate! @spread): Video! @update
+    upsertVideo(id: String!, content: VideoInputUpdate! @spread): Video! @upsert
 }
 
 input VideoInput {
     id: String!
+    music: MusicInputBelongsTo
+    release_date: Date
+    is_mv: Boolean
+    is_original_music: Boolean
+    original_video_id: String
+    custom_music_name: String
+    image_url_thumbnail: String
+    singers: ArtistInputBelongsToMany
+    mixers: ArtistInputBelongsToMany
+    off_vocals: ArtistInputBelongsToMany
+    arrangers: ArtistInputBelongsToMany
+    recommends: VideoInputBelongsToMany
+}
+
+input VideoInputUpdate {
     music: MusicInputBelongsTo
     release_date: Date
     is_mv: Boolean
