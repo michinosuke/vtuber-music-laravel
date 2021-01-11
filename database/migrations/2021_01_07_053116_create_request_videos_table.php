@@ -16,9 +16,10 @@ class CreateRequestVideosTable extends Migration
         Schema::create('request_videos', function (Blueprint $table) {
             $table->string('id', 31);
             $table->integer('stage')->unsigned();
-            $table->string('content', 2047);
+            $table->text('content');
             $table->string('contributor_twitter_id', 16)->nullable();
             $table->boolean('is_done')->default(FALSE);
+            $table->boolean('is_issue')->default(FALSE);
 
             $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();

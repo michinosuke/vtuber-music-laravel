@@ -13,6 +13,7 @@ input RequestVideoInput {
     content: String!
     contributor_twitter_id: String
     is_done: Boolean
+    is_issue: Boolean
 }
 
 input RequestVideoInputUpdate {
@@ -20,6 +21,7 @@ input RequestVideoInputUpdate {
     content: String!
     contributor_twitter_id: String
     is_done: Boolean
+    is_issue: Boolean
 }
 
 type RequestVideo {
@@ -28,6 +30,7 @@ type RequestVideo {
     content: String!
     contributor_twitter_id: String
     is_done: Boolean!
+    is_issue: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
 }
