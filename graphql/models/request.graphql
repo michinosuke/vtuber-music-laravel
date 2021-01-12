@@ -1,5 +1,5 @@
 extend type Query {
-    requestVideos(orderBy: _ @orderBy(columns: ["stage", "posted_at", "title"])): [RequestVideo]! @all
+    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title"])): [RequestVideo]! @all
 }
 
 extend type Mutation {
