@@ -4,7 +4,8 @@ extend type Query {
         id: String @where(operator: "like", key: "id"),
         name: String @where(operator: "like", key: "name")
     ): [Artist]! @all
-    allArtist: [Artist!]! @paginate
+    allArtist: [Artist!]! @all
+    allArtistPaginate: [Artist!]! @paginate
     countArtist: Int! @count(model: "Artist")
 }
 
