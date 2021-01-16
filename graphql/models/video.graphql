@@ -1,6 +1,6 @@
 extend type Query {
     video(id: String! @eq): Video @find
-    allVideo: [Video!]! @all
+    allVideo: [Video!]! @paginate
     countVideo: Int! @count(model: "Video")
 }
 
