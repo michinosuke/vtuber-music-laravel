@@ -1,5 +1,6 @@
 extend type Query {
-    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title"])): [RequestVideo]! @all
+    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title"])): [RequestVideo]! @all(scopes: ["notDone"])
+    requestVideosCount: Int! @count(model: "RequestVideo")
 }
 
 extend type Mutation {

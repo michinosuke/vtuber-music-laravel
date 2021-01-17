@@ -40,8 +40,8 @@ class RequestVideo extends Model
      */
     protected $keyType = 'string';
 
-    // public function scopeNotFinished(Builder $query): Builder
-    // {
-    //     return $query->whereNotNull('email_verified_at');
-    // }
+    public function scopeNotDone(Builder $query): Builder
+    {
+        return $query->where('is_done', false);
+    }
 }
