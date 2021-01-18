@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class RequestVideo extends Model
 {
@@ -43,5 +44,10 @@ class RequestVideo extends Model
     public function scopeNotDone(Builder $query): Builder
     {
         return $query->where('is_done', false);
+    }
+
+    public function scopeCountByDay(Builder $query): Builder
+    {
+        return $query->select([DB::raw('CAST(created_at as DATE) as created_at'), DB::raw('COUNT(*) as count')])->groupBy('created_at');
     }
 }

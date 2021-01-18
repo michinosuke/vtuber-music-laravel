@@ -1,6 +1,7 @@
 extend type Query {
     requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title"])): [RequestVideo]! @all(scopes: ["notDone"])
     requestVideosCount: Int! @count(model: "RequestVideo")
+    requestVideosCountByDay: [RequestVideoCountAccumulation]! @all(model: "RequestVideo", scopes: ["countByDay"])
 }
 
 extend type Mutation {
@@ -34,4 +35,9 @@ type RequestVideo {
     is_issue: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type RequestVideoCountAccumulation {
+    created_at: Date
+    count: Int
 }
