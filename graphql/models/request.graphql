@@ -1,5 +1,5 @@
 extend type Query {
-    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title"])): [RequestVideo]! @all(scopes: ["notDone"])
+    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
     requestVideosCount: Int! @count(model: "RequestVideo")
     requestVideosCountByDay: [RequestVideoCountAccumulation]! @all(model: "RequestVideo", scopes: ["countByDay"])
 }
