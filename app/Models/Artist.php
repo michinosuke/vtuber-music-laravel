@@ -132,7 +132,7 @@ class Artist extends Model
     public function scopeOnlySinger(Builder $query): Builder
     {
         return $query
-            ->select('artists.*')
+            ->select('*')
             ->join('video_singers', 'video_singers.artist_id', '=', 'artists.id')
             ->whereNotNull('video_singers.artist_id')
             ->groupBy('artists.id');
@@ -141,7 +141,7 @@ class Artist extends Model
     public function scopeWithoutSinger(Builder $query): Builder
     {
         return $query
-            ->select('artists.*')
+            ->select('*')
             ->leftJoin('video_singers', 'video_singers.artist_id', '=', 'artists.id')
             ->whereNull('video_singers.artist_id')
             ->groupBy('artists.id');
