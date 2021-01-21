@@ -3,7 +3,7 @@ extend type Query {
     #     where: _ @whereConditions(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])
     #     orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])
     # ): [RequestVideo]!
-    requestVideos(contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
+    requestVideos(id: String @eq, contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
     requestVideosPaginate(contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @paginate(scopes: ["notDone"])
     requestVideosCount: Int! @count(model: "RequestVideo")
     requestVideosCountByDay: [RequestVideoCount]! @all(model: "RequestVideo", scopes: ["countByDay"])
