@@ -48,6 +48,11 @@ class RequestVideo extends Model
 
     public function scopeCountByDay(Builder $query): Builder
     {
-        return $query->select([DB::raw('CAST(created_at as DATE) as created_at'), DB::raw('COUNT(*) as count')])->groupBy('created_at');
+        return $query->selectRaw("count(*) as count, DATE_FORMAT(created_at, '%Y/%m/%d %H') as date")->groupByRaw("DATE_FORMAT(created_at, '%Y/%m/%d %H')")->orderBy('date');
+    }
+
+    public function scopeCountByContributor(Builder $query, $contributor_twitter_id): Builder
+    {
+        return $query->select("count(*) as count")->where('contributor_twitter_id', $contributor_twitter_id);
     }
 }

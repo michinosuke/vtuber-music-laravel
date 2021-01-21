@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Artist extends Model
 {
@@ -126,4 +127,23 @@ class Artist extends Model
     // {
     //     return $this->belongToMany('\App\Models\Music', 'video_singers', 'artist_id', 'video_id');
     // }
+
+
+    public function scopeOnlySinger(Builder $query): Builder
+    {
+        return $query
+            ->select('artists.*')
+            ->join('video_singers', 'video_singers.artist_id', '=', 'artists.id')
+            ->whereNotNull('video_singers.artist_id')
+            ->groupBy('artists.id');
+    }
+
+    public function scopeWithoutSinger(Builder $query): Builder
+    {
+        return $query
+            ->select('artists.*')
+            ->leftJoin('video_singers', 'video_singers.artist_id', '=', 'artists.id')
+            ->whereNull('video_singers.artist_id')
+            ->groupBy('artists.id');
+    }
 }

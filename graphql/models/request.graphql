@@ -1,7 +1,11 @@
 extend type Query {
-    requestVideos(orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
+    # requestVideos(
+    #     where: _ @whereConditions(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])
+    #     orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])
+    # ): [RequestVideo]!
+    requestVideos(contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
     requestVideosCount: Int! @count(model: "RequestVideo")
-    requestVideosCountByDay: [RequestVideoCountAccumulation]! @all(model: "RequestVideo", scopes: ["countByDay"])
+    requestVideosCountByDay: [RequestVideoCount]! @all(model: "RequestVideo", scopes: ["countByDay"])
 }
 
 extend type Mutation {
@@ -37,7 +41,7 @@ type RequestVideo {
     updated_at: DateTime!
 }
 
-type RequestVideoCountAccumulation {
-    created_at: Date
-    count: Int
+type RequestVideoCount {
+    date: String!
+    count: Int!
 }

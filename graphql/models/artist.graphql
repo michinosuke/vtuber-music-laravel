@@ -1,11 +1,14 @@
 extend type Query {
     artist(id: String! @eq): Artist @find
-    findArtist(
-        id: String @where(operator: "like", key: "id"),
-        name: String @where(operator: "like", key: "name")
-    ): [Artist]! @all
-    allArtist: [Artist!]! @all
-    allArtistPaginate: [Artist!]! @paginate
+    # findArtist(
+    #     id: String @where(operator: "like", key: "id"),
+    #     name: String @where(operator: "like", key: "name")
+    # ): [Artist]! @all
+    allArtist: [Artist]! @all
+    # allArtistOnlySingerCount: Int! @all @count(model: "Artist", scopes: ["onlySinger"])
+    allArtistOnlySinger: [Artist]! @paginate(scopes: ["onlySinger"])
+    allArtistWithoutSinger: [Artist]! @paginate(scopes: ["withoutSinger"])
+    allArtistPaginate: [Artist]! @paginate
     countArtist: Int! @count(model: "Artist")
 }
 
