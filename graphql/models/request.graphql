@@ -5,6 +5,7 @@ extend type Query {
     # ): [RequestVideo]!
     requestVideos(id: String @eq, contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @all(scopes: ["notDone"])
     requestVideosPaginate(contributor_twitter_id: String @eq, orderBy: _ @orderBy(columns: ["stage", "updated_at", "title", "is_issue", "contributor_twitter_id"])): [RequestVideo]! @paginate(scopes: ["notDone"])
+    requestVideosPaginateAll(contributor_twitter_id: String @eq): [RequestVideo]! @paginate
     requestVideosCount: Int! @count(model: "RequestVideo")
     requestVideosCountByDay: [RequestVideoCount]! @all(model: "RequestVideo", scopes: ["countByDay"])
 }
