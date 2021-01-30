@@ -2,6 +2,7 @@ extend type Query {
     video(id: String! @eq): Video @find
     allVideo: [Video!]! @all
     allVideoPaginate: [Video!]! @paginate
+    allVideoPaginateNotDeleted: [Video!]! @paginate(scopes: ["notDeleted"])
     countVideo: Int! @count(model: "Video")
 }
 

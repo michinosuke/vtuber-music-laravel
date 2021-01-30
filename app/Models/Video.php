@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
 class Video extends Model
 {
@@ -82,5 +83,10 @@ class Video extends Model
     public function tags(): HasMany
     {
         return $this->hasMany('\App\Models\VideoTag');
+    }
+
+    public function scopeNotDeleted(Builder $query): Builder
+    {
+        return $query->where('is_deleted', false);
     }
 }
